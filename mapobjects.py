@@ -9,8 +9,8 @@ arena = None
 class Pacman:
     def __init__(self,
         newStarty, newStartx):
-        self.startx = newStartx
-        self.starty = newStarty
+        self.x = newStartx
+        self.y = newStarty
         self.score = 0
         self.alive = True
 
@@ -21,8 +21,8 @@ class Pacman:
 class Ghost:
     def __init__(self,
                  newStarty, newStartx):
-        self.startx = newStartx
-        self.starty = newStarty
+        self.x = newStartx
+        self.y = newStarty
         self.alive = True
 
     def isAlive(self):
@@ -38,10 +38,14 @@ class Cell:
 
         self.directions = []
 
+        self.visited = False
 
     def __lt__(ob1, ob2):
         return False    
- 
+    
+    def notVisited(self):
+        return not self.visited
+
     def getNeighbours(self, arena):
         neighbours = []
         

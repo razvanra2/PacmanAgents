@@ -2,7 +2,7 @@ from mapobjects import *
 from os import system
 import time
 import copy
-#import emoji
+import emoji
 
 class IoHandler:
     @staticmethod
@@ -22,7 +22,7 @@ class IoHandler:
         line = fileReader.readline()
         pacy = int(line.split(" ")[0])
         pacx = int(line.split(" ")[1])
-        pacman = Pacman(pacx,pacy)
+        pacman = Pacman(pacy,pacx)
         arena[pacy][pacx].pacman = pacman
 
         ghosts = []
@@ -33,7 +33,7 @@ class IoHandler:
             starty = int(ghostLineToks[0])
             startx = int(ghostLineToks[1])
 
-            newGhost = Ghost(startx, starty)
+            newGhost = Ghost(starty, startx)
 
             ghosts.append(newGhost)
 
@@ -74,11 +74,11 @@ class IoHandler:
     @staticmethod
     def GetArenaChar(cell):
         if (cell.pacman != None):
-            #return emoji.emojize(':oncoming_taxi:')
-            return 'P'
+            return "\U0001f600"
+            #return 'P'
         elif (cell.ghost != None):
-            #return emoji.emojize(':thumbs_up:')
-            return 'G'
+            return emoji.emojize(':ghost:')
+            #return 'G'
 
         return ' '
 
